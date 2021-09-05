@@ -20,7 +20,7 @@ class ProductInventorySimulation extends Simulation {
     )
 	 
     .exec(http("Get Product Inventory By Id")
-      .get("/rvy/api/pis/v1/product/15")
+      .get("/rvy/api/pis/v1/product/5869")
       .check(status is 200)
     )
 	
