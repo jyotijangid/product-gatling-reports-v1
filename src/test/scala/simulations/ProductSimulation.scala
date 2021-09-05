@@ -6,7 +6,7 @@ import io.gatling.http.Predef._
 class ProductSimulation extends Simulation {
 
   //conf
-  val value_conf = http.baseUrl("http://localhost:8001")
+  val value_conf = http.baseUrl("http://localhost:8081")
     .header("Accept",value="application/json")
     .header(name="content-type", value ="application/json")
 
