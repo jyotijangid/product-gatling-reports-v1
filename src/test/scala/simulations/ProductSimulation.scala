@@ -13,11 +13,11 @@ class ProductSimulation extends Simulation {
 
   //scenario
   val scn = scenario("Get all Products")
-    .exec(http("get all product details")
-      .get("/rvy/api/pms/v1/products")
-      .check(status is 200)
+//     .exec(http("get all product details")
+//       .get("/rvy/api/pms/v1/products")
+//       .check(status is 200)
 
-     )
+//      )
 	 
     .exec(http("Get Product By Id")
       .get("/rvy/api/pms/v1/product/11")
