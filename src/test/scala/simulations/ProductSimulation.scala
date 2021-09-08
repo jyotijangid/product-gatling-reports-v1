@@ -6,7 +6,7 @@ import io.gatling.http.Predef._
 class ProductSimulation extends Simulation {
 
   //conf
-  val value_conf = http.baseUrl("http://localhost:8081")
+  val value_conf = http.baseUrl("https://api.rvymart.com:443")
     .header("Accept",value="application/json")
     .header(name="content-type", value ="application/json")
 
@@ -14,24 +14,24 @@ class ProductSimulation extends Simulation {
   //scenario
   val scn = scenario("Get all Products")
     .exec(http("get all product details")
-      .get("/rvy/api/pms/v1/products")
+      .get("/ps/rvy/api/pms/v1/products")
       .check(status is 200)
 
      )
 	 
     .exec(http("Get Product By Id")
-      .get("/rvy/api/pms/v1/product/11")
+      .get("/ps/rvy/api/pms/v1/product/118")
       .check(status is 200)
     )
 	
 	.exec(http("Post product")
-      .post("/rvy/api/pms/v1/product")
+      .post("/ps/rvy/api/pms/v1/product")
       .body(RawFileBody(filePath = "./src/test/resources/bodies/addProduct.json")).asJson
       .header(name="content-type",value = "application/json")
       .check(status is 200))
 
 	.exec(http("Update product")
-      .post("/rvy/api/pms/v1/product")
+      .put("/ps/rvy/api/pms/v1/product")
       .body(RawFileBody(filePath = "./src/test/resources/bodies/updateProduct.json")).asJson
       .header(name="content-type",value = "application/json")
       .check(status is 200))
