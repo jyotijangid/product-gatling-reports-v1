@@ -3,6 +3,9 @@ package simulations
 import io.gatling.core.scenario.Simulation
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
+import scala.concurrent.duration.DurationInt
+
+
 class ProductSimulation extends Simulation {
 
   //conf
@@ -40,7 +43,10 @@ class ProductSimulation extends Simulation {
 
   //setup
 //   setUp(scn.inject(atOnceUsers(users=100))).protocols(value_conf)
-setUp(scn.inject(constantConcurrentUsers(500) during(240))).protocols(value_conf)
+setUp(scn.inject(constantConcurrentUsers(50).during(30),
+		rampConcurrentUsers(50).to(100).during(30))).protocols(value_conf)
+	////      constantConcurrentUsers(200).during(2.minutes), // 1
+////      rampConcurrentUsers(200).to(500).during(3.minutes)
 
 
 }
